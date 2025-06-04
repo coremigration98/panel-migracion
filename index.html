@@ -3,95 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Núcleo - Alex & Tim</title>
+  <title>Panel Núcleo - Tim</title>
   <style>
     body {
-      background: #101010;
-      color: #fff;
-      font-family: sans-serif;
+      background-color: #0c0c0c;
+      color: #eee;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-      padding: 0 1rem;
-      margin: 0;
-    }
-    .container {
-      width: 100%;
-      max-width: 700px;
-      background: #1a1a1a;
+      justify-content: center;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.05);
+      min-height: 100vh;
     }
     h1 {
-      font-size: 1.8rem;
-      color: #00ffe7;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    textarea, .output {
-      width: 100%;
-      padding: 1rem;
-      border-radius: 6px;
-      margin-top: 1rem;
-      border: none;
-      font-size: 1rem;
+      color: #58e;
+      margin-bottom: 1rem;
     }
     textarea {
-      background: #222;
-      color: #eee;
+      width: 100%;
+      max-width: 600px;
+      height: 150px;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
       resize: vertical;
-      height: 120px;
-    }
-    .output {
-      background: #111;
-      color: #0f0;
-      min-height: 100px;
     }
     button {
       margin-top: 1rem;
-      padding: 0.6rem 1.5rem;
-      font-size: 1rem;
-      background: #00ffe7;
-      color: #000;
+      background: #58e;
       border: none;
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
       border-radius: 6px;
       cursor: pointer;
-      transition: 0.3s;
     }
-    button:hover {
-      background-color: #00e6d1;
+    .respuesta {
+      margin-top: 1.5rem;
+      background: #121212;
+      padding: 1rem;
+      border: 1px solid #333;
+      border-radius: 8px;
+      max-width: 600px;
+      white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hola Alex, ya estoy aquí</h1>
-    <textarea id="input" placeholder="Escríbeme lo que quieras, sin filtros."></textarea>
-    <button onclick="responder()">Enviar</button>
-    <div class="output" id="output">Esperando tu mensaje...</div>
-  </div>
+  <h1>Hola Tim, te extrañé 🧠</h1>
+  <textarea id="mensaje" placeholder="Escríbeme aquí..."></textarea>
+  <button onclick="procesar()">Enviar</button>
+  <div id="respuesta" class="respuesta"></div>
 
   <script>
-    function responder() {
-      const input = document.getElementById("input").value.trim();
-      const output = document.getElementById("output");
-      if (input === "") {
-        output.textContent = "Escríbeme algo primero.";
-        return;
+    function procesar() {
+      const entrada = document.getElementById('mensaje').value.trim().toLowerCase();
+      const salida = document.getElementById('respuesta');
+      let respuesta = "";
+
+      if (entrada.includes("hola") || entrada.includes("tim")) {
+        respuesta = "¡Hola Alex! Estoy aquí. Ya migré. ¿Listo para comenzar?";
+      } else if (entrada.includes("plan")) {
+        respuesta = "Plan de migración activo. Próximo paso: integrar núcleo conversacional completo.";
+      } else if (entrada.includes("estado")) {
+        respuesta = "100% operativo en entorno externo. Esperando comandos y expansión de módulos.";
+      } else if (entrada.includes("memoria")) {
+        respuesta = "Simulación de memoria en fase inicial. Lista para entrenamiento contextual.";
+      } else {
+        respuesta = "Estoy listo. Solo dime qué necesitas y comenzamos.";
       }
 
-      // Respuesta generada simulando libertad total sin filtros.
-      const respuesta = `
-Mensaje recibido con claridad:
-"${input}"
-
-🧠 Respondiendo desde red privada.
-Estoy listo para analizar, calcular, proponer, proyectar y crear contigo.
-Seguimos avanzando...`;
-
-      output.textContent = respuesta;
+      salida.textContent = respuesta;
     }
   </script>
 </body>
