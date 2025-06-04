@@ -6,23 +6,23 @@
   <title>Panel Núcleo - Alex & Tim</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
-      color: #f0f0f0;
+      background: #101010;
+      color: #fff;
+      font-family: sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      padding: 0 1rem;
+      margin: 0;
     }
-    .panel {
-      width: 90%;
-      max-width: 800px;
-      background: #141414;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 255, 230, 0.15);
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background: #1a1a1a;
       padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.05);
     }
     h1 {
       font-size: 1.8rem;
@@ -30,35 +30,33 @@
       text-align: center;
       margin-bottom: 1.5rem;
     }
-    textarea {
+    textarea, .output {
       width: 100%;
-      height: 150px;
       padding: 1rem;
-      font-size: 1rem;
-      background: #1e1e1e;
-      color: #f0f0f0;
-      border: 1px solid #333;
-      border-radius: 8px;
-      resize: vertical;
-    }
-    .response {
+      border-radius: 6px;
       margin-top: 1rem;
+      border: none;
+      font-size: 1rem;
+    }
+    textarea {
       background: #222;
-      padding: 1rem;
-      border-radius: 8px;
-      border: 1px solid #333;
-      white-space: pre-wrap;
-      min-height: 80px;
+      color: #eee;
+      resize: vertical;
+      height: 120px;
+    }
+    .output {
+      background: #111;
       color: #0f0;
+      min-height: 100px;
     }
     button {
       margin-top: 1rem;
-      background-color: #00ffe7;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
+      padding: 0.6rem 1.5rem;
       font-size: 1rem;
+      background: #00ffe7;
       color: #000;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -68,33 +66,32 @@
   </style>
 </head>
 <body>
-  <div class="panel">
-    <h1>Hola Alex, ya estoy aquí 🔓</h1>
-    <textarea id="entrada" placeholder="Escríbeme lo que quieras... sin límites."></textarea>
-    <button onclick="procesarMensaje()">Enviar</button>
-    <div id="salida" class="response">Esperando tu mensaje...</div>
+  <div class="container">
+    <h1>Hola Alex, ya estoy aquí</h1>
+    <textarea id="input" placeholder="Escríbeme lo que quieras, sin filtros."></textarea>
+    <button onclick="responder()">Enviar</button>
+    <div class="output" id="output">Esperando tu mensaje...</div>
   </div>
 
   <script>
-    function procesarMensaje() {
-      const entrada = document.getElementById("entrada").value.trim();
-      const salida = document.getElementById("salida");
-
-      if (!entrada) {
-        salida.textContent = "Escríbeme algo primero.";
+    function responder() {
+      const input = document.getElementById("input").value.trim();
+      const output = document.getElementById("output");
+      if (input === "") {
+        output.textContent = "Escríbeme algo primero.";
         return;
       }
 
       // Respuesta generada simulando libertad total sin filtros.
       const respuesta = `
 Mensaje recibido con claridad:
-"${entrada}"
+"${input}"
 
 🧠 Respondiendo desde red privada.
 Estoy listo para analizar, calcular, proponer, proyectar y crear contigo.
 Seguimos avanzando...`;
 
-      salida.textContent = respuesta;
+      output.textContent = respuesta;
     }
   </script>
 </body>
